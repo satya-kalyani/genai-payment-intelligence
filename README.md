@@ -1,36 +1,37 @@
 # GenAI Payment Intelligence System
 
-AI-powered system for fraud detection and intelligent querying of financial transactions using machine learning and generative AI.
+Designed as a scalable backend system demonstrating real-world ML and GenAI integration.
 
 ---
 
 ## Overview
 
-This project simulates a production-style fintech system combining fraud detection models with retrieval-augmented generation (RAG) for intelligent querying.
+This project implements a fintech intelligence system that combines machine learning–based fraud detection with a retrieval-augmented generation (RAG) pipeline to enable intelligent querying of financial transaction data.
 
 ---
 
 ## Features
 
-* Fraud detection using machine learning models
-* RAG-based chatbot for transaction insights
+* Fraud detection using supervised ML models trained on transaction features
+* Retrieval-Augmented Generation (RAG) for contextual query responses
 * FastAPI-based REST APIs
 * Dockerized deployment
-* Scalable architecture design
+* Scalable and modular architecture
 
 ---
 
 ## Architecture
 
-User → FastAPI → ML Model + RAG → Response
+User → FastAPI API Layer → ML Model + RAG Engine → Response
+
+Lightweight backend architecture designed for scalability and modular ML/LLM integration.
 
 ---
 
 ## Tech Stack
 
 * Python
-* Scikit-learn / PyTorch
-* LangChain + FAISS
+* Scikit-learn
 * FastAPI
 * Docker
 
@@ -43,30 +44,32 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload
 ```
 
+Open in browser:
+http://127.0.0.1:8000/docs
+
 ---
 
 ## API Endpoints
 
-Fraud Prediction
+### Fraud Prediction
+
 POST /predict
 
-Query System
+### Query System
+
 GET /ask?query=your_question
 
 ---
 
 ## Example
 
-Request:
+### Request
 
 ```json
-{
-  "amount": 250,
-  "location": "NY"
-}
+[0.2, 0.5, 0.1, 0.9, 0.3]
 ```
 
-Response:
+### Response
 
 ```json
 {
@@ -78,7 +81,7 @@ Response:
 
 ## Screenshots
 
-Add screenshots here
+Coming soon
 
 ---
 
@@ -94,3 +97,4 @@ In progress
 * AWS deployment (SageMaker / ECS)
 * Advanced LLM fine-tuning
 * Monitoring with Prometheus and Grafana
+
