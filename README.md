@@ -81,8 +81,9 @@ GET /ask?query=your_question
 
 ## Screenshots
 
-Coming soon
+API Documentation (FastAPI Swagger UI)
 
+![API](assets/api.png)
 ---
 
 ## Status
