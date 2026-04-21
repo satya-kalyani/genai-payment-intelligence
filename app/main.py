@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from app.model import load_model
-from app.rag import query_rag
+from model import load_model
+from rag import query_rag
 
 app = FastAPI()
 
