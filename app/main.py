@@ -1,19 +1,22 @@
 from fastapi import FastAPI
-from model import load_model
-from rag import query_rag
+from pydantic import BaseModel
+from app.model import load_model
+from app.rag import query_rag
 
 app = FastAPI()
 
-# Load model once
 model = load_model()
+
+class InputData(BaseModel):
+    data: list
 
 @app.get("/")
 def home():
     return {"message": "GenAI Payment Intelligence API is running"}
 
 @app.post("/predict")
-def predict(data: list):
-    prediction = model.predict([data])
+def predict(input: InputData):
+    prediction = model.predict([input.data])
     return {"fraud": int(prediction[0])}
 
 @app.get("/ask")
