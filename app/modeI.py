@@ -1,10 +1,22 @@
+import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
-import numpy as np
+import joblib
+import os
 
-def load_model():
-    X = np.random.rand(100, 5)
-    y = np.random.randint(0, 2, 100)
-    
+MODEL_PATH = "model.pkl"
+
+def train_model():
+    df = pd.read_csv("data/sample_transactions.csv")
+    X = df.drop("fraud", axis=1)
+    y = df["fraud"]
+
     model = RandomForestClassifier()
     model.fit(X, y)
+
+    joblib.dump(model, MODEL_PATH)
     return model
+
+def load_model():
+    if not os.path.exists(MODEL_PATH):
+        return train_model()
+    return joblib.load(MODEL_PATH)
